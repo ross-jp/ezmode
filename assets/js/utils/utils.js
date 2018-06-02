@@ -36,7 +36,8 @@ var utils = (function(){
 
             //fire away...
             if(function_to_invoke){
-                views[function_to_invoke](data, params);
+              console.log('function to invoke =>' + function_to_invoke)
+                views[function_to_invoke]();
             }
         },
 
@@ -53,13 +54,13 @@ var utils = (function(){
         },
 
         //This function is for illustration as there is really no need for ajax here...
-        request: function(api_stub, success_callback, error_callback, callback_params){
+        request: function( success_callback, error_callback, callback_params){
             // api_stub = api_stub || '';
             // callback_params = callback_params || {};
             //
-            // controllers.show_loader('page-content');
+            // //controllers.show_loader('page-content');
             //
-            // var url = config.api_server + api_stub;
+            // var url =  api_stub;
             //
             // var x = new XMLHttpRequest();
             // x.onreadystatechange = function(){
@@ -78,17 +79,10 @@ var utils = (function(){
             //         }
             //     }
             // };
-            // //other methods can be implemented here
-            // x.open('GET', url, true);
-            // x.send();
+            //other methods can be implemented here
+            //x.open('GET', url, true);
+            //x.send();
+            controllers[success_callback]();
         },
-
-        get_link: function(post){
-            var link = '#post?'+post.post;
-            if(post.external_link){
-                link = post.external_link;
-            }
-            return link;
-        }
     }
 })();
